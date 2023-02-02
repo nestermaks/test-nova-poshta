@@ -14,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('{locale}/warehouses/{city}', [\App\Http\Controllers\FormController::class, 'warehouses']);
+Route::post('{locale}/estimate', [\App\Http\Controllers\FormController::class, 'estimate']);

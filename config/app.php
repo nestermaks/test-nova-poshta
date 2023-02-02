@@ -82,7 +82,9 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'uk',
+
+    'locales' => ['uk', 'ru'],
 
     /*
     |--------------------------------------------------------------------------
@@ -95,7 +97,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'uk',
 
     /*
     |--------------------------------------------------------------------------
@@ -194,6 +196,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\SiteLangServiceProvider::class,
 
     ],
 
@@ -209,7 +212,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'SiteLang' => \App\Translations\Facades\SiteLang::class,
     ])->toArray(),
 
 ];

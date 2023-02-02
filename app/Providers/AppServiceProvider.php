@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Translations\Facades\SiteLang;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -23,6 +25,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $locale = SiteLang::getLocale();
+        app()->setLocale($locale);
+
+        View::share('locale', $locale);
     }
 }

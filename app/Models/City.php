@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use App\Traits\ModelGetters;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
     use HasFactory;
+    use ModelGetters;
+
+    protected $appends = ['title'];
 
     protected $fillable = ['name', 'ref'];
 
@@ -20,7 +24,7 @@ class City extends Model
         return $this->belongsTo(Oblast::class);
     }
 
-    public function warehoused()
+    public function warehouses()
     {
         return $this->hasMany(Warehouse::class);
     }
