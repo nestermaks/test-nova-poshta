@@ -10,7 +10,9 @@ You can see the task description [here](task.md)
 git clone git@github.com:nestermaks/test-nova-poshta.git
 ```
 
-### Install dependencies with docker
+### Open your terminal in a directory with this project
+
+#### Install dependencies with docker
 
 ```sh
 docker run --rm \
@@ -20,8 +22,6 @@ docker run --rm \
     laravelsail/php82-composer:latest \
     composer install --ignore-platform-reqs
 ```
-
-### Open your terminal in a directory with this project
 
 #### Make .env file
 
@@ -48,5 +48,11 @@ vendor/bin/sail artisan parse NovaPoshta
 ```
 
 If remote server stucks, just retry
+
+#### Generate an application key
+
+```sh
+vendor/bin/sail artisan key:generate
+```
 
 ### Visit http://localhost in your browser

@@ -41,8 +41,8 @@ class FormService
   public function validateForm(Request $request)
   {
     return Validator::make($request->all(), [
-      'city' => ['required'],
-      'warehouse' => ['required'],
+      'city' => ['required', 'not_in:none'],
+      'warehouse' => ['required', 'not_in:none'],
       'price' => ['numeric', 'min:1', 'integer', 'max:1000000']
     ]);
   }
