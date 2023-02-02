@@ -38,7 +38,13 @@ vendor/bin/sail up -d
 #### Run migrations
 
 ```sh
-vendor/bin/sail artisan migrate --seed
+vendor/bin/sail artisan migrate
+```
+
+#### Seed database
+
+```sh
+vendor/bin/sail artisan db:seed
 ```
 
 #### Parse data
@@ -47,7 +53,7 @@ vendor/bin/sail artisan migrate --seed
 vendor/bin/sail artisan parse NovaPoshta
 ```
 
-If remote server stucks, just retry
+If you have error with connection timeout, just retry
 
 #### Generate an application key
 
