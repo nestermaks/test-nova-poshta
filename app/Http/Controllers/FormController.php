@@ -17,7 +17,7 @@ class FormController extends Controller
   public function warehouses(Request $request)
   {
     try {
-      $this->form_service->getWarehouses($request);
+      return $this->form_service->getWarehouses($request);
     } catch (\Exception $e) {
       return $e;
     }

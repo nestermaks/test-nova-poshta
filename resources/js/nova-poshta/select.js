@@ -1,73 +1,72 @@
-import axios from 'axios'
+import axios from "axios";
 
-export default function (locale) {
-  return {
-    cities: document.querySelector('#cities'),
-    warehouses: document.querySelector('#warehouses'),
-    city: '',
-    locale: locale,
-    warehousesOptions: {},
+export default function(locale) {
+	return {
+		cities: document.querySelector("#cities"),
+		warehouses: document.querySelector("#warehouses"),
+		city: "",
+		locale: locale,
+		warehousesOptions: {},
 
-    getWarehouses: async function (city) {
-      const dep = await axios.get(`api/${this.locale}/warehouses/${city}`)
-      return dep.data
-    },
+		getWarehouses: async function(city) {
+			const dep = await axios.get(
+				`api/${this.locale}/warehouses/${city}`
+			);
 
-    init: function () {
-      
-      this.switchActive(false)
-      this.cities.addEventListener('change', async (event) => {
-        this.city = event.target.value;
-          this.refreshOptions()
-      })
-    },
+			return dep.data;
+		},
+		init: function() {
+			this.switchActive(false);
+			this.cities.addEventListener("change", async (event) => {
+				this.city = await event.target.value;
+				this.refreshOptions();
+			});
+		},
 
-    refreshOptions: async function () {
-      await this.removeOptions()
-      if (this.cities.value !== 'none') {
-        await this.getOptions()
-        await this.addOptions()
-      }
-      this.checkOptions()
-      
-    },
+		refreshOptions: async function() {
+			this.removeOptions();
+			if (this.cities.value !== "none") {
+				await this.getOptions();
+				this.addOptions();
+			}
+			this.checkOptions();
+		},
 
-    getOptions: async function () {
-      this.warehousesOptions = await this.getWarehouses(this.city)
-    },
+		getOptions: async function() {
+			this.warehousesOptions = await this.getWarehouses(this.city);
+		},
 
-    checkOptions: function () {
-        if (Object.keys(this.warehouses.options).length < 2) {
-          this.switchActive(false)
-        } else {
-          this.switchActive(true)
-        }
-    },
+		checkOptions: function() {
+			if (Object.keys(this.warehouses.options).length < 2) {
+				this.switchActive(false);
+			} else {
+				this.switchActive(true);
+			}
+		},
 
-    switchActive: function (active = true) {
-          this.warehouses.disabled = !active
+		switchActive: function(active = true) {
+			this.warehouses.disabled = !active;
 
-          const add = active ? 'cursor-pointer' : 'cursor-not-allowed'
-          const remove = active ? 'cursor-not-allowed' : 'cursor-pointer' 
+			const add = active ? "cursor-pointer" : "cursor-not-allowed";
+			const remove = active ? "cursor-not-allowed" : "cursor-pointer";
 
-          this.warehouses.classList.remove(remove)
-          this.warehouses.classList.add(add)
+			this.warehouses.classList.remove(remove);
+			this.warehouses.classList.add(add);
+		},
 
-    },
+		addOptions: function() {
+			for (const [ref, name] of Object.entries(this.warehousesOptions)) {
+				let option = document.createElement("option");
+				option.text = name;
+				option.value = ref;
+				this.warehouses.add(option);
+			}
+		},
 
-    addOptions: function () {
-        for (const [ref, name] of Object.entries(this.warehousesOptions)) {
-          let option = document.createElement('option')
-          option.text = name
-          option.value = ref
-          this.warehouses.add(option)
-        }
-    },
-
-    removeOptions: function () {
-     while (this.warehouses.options.length > 1) {
-       this.warehouses.remove(1)
-     }
-    }
-  }
+		removeOptions: function() {
+			while (this.warehouses.options.length > 1) {
+				this.warehouses.remove(1);
+			}
+		},
+	};
 }
