@@ -23,6 +23,12 @@ docker run --rm \
 
 ### Open your terminal in a directory with this project
 
+#### Make .env file
+
+```sh
+cp .env.example .env
+```
+
 #### Start a server
 
 ```sh

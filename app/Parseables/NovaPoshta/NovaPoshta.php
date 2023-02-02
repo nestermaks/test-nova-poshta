@@ -55,5 +55,7 @@ class NovaPoshta implements Parseable
 
     $this->parseCities();
     $this->parseWarehouses();
+
+    return 'Parsed!';
   }
 }

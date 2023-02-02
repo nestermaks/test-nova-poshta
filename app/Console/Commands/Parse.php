@@ -29,8 +29,7 @@ class Parse extends Command
     public function handle()
     {
         $target = $this->getParseable();
-        $this->info($target->parse());
-        return Command::SUCCESS;
+        return $this->info($target->parse());
     }
 
     protected function getParseable(): Parseable
