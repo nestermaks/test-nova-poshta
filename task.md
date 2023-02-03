@@ -70,7 +70,7 @@ Registration on Nova Poshta is not necessary, methods are public, POST.
 
 To work with data, use the built-in Laravel tools.
 
-It is required to write a [readme.md](/readme.md) that will allow the reviewer to execute a console command, run the project with a test task locally, and calculate the shipping cost.
+It is required to write a [readme.md](/README.md) that will allow the reviewer to execute a console command, run the project with a test task locally, and calculate the shipping cost.
 
 ## Order of checking
 
